@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Stage1') {
       steps {
-        echo 'This is Blue Ocean stage-1 with Build no. $BUILD_NUMBER of Demo $DEMO'
+        echo '"This is Blue Ocean stage-1 with Build no. $BUILD_NUMBER of Demo $DEMO"'
+        sh 'echo "This is Blue Ocean stage-1 with Build no. $BUILD_NUMBER of Demo $DEMO"'
       }
     }
 
