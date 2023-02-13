@@ -1,14 +1,36 @@
 pipeline {
-  agent any
-  stages {
-    stage('Stage1') {
-      steps {
-        echo '"This is Blue Ocean stage-1 with Build no. $BUILD_NUMBER of Demo $DEMO"'
+    agent { 
+        node {
+            label 'My-agent'
+            }
       }
+    environment{
+        VERSION ="0.0.0"
     }
+    
 
-  }
-  environment {
-    DEMO = '1'
-  }
+
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo "This is build number $BUILD_NUMBER"
+            }
+        }
+        stage('Test') {
+            steps {
+                powershell 'Write-Output "Hello, World!"'
+                
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "the current version is $VERSION"
+                println("$VERSION")
+                
+            }
+
+        }
+    }
+    
 }
