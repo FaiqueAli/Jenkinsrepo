@@ -22,6 +22,13 @@ pipeline {
                 bat 'docker run --rm jenkinsrepo:v1'
                
             }
+            {
+                success {
+                    script {
+                        bat 'docker rmi jenkinsrepo:v1'
+                    }
+                }
+            }
             
         }
         stage('Deploy') {
