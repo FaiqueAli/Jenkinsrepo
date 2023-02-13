@@ -19,9 +19,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                powershell 'Write-Output "Hello, World!"'
-                
+                bat 'docker run --rm jenkinsrepo:v1'
+               
             }
+            
         }
         stage('Deploy') {
             steps {
