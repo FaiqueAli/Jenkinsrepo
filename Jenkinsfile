@@ -12,11 +12,8 @@ pipeline {
         stage('Hello') {
             steps {
                 script {
-                    // Build the Docker image using the Dockerfile in the current workspace
-                    // def image = docker.build("jenkinsrepo:v1")
-                       bat 'docker --version '
-                    // // Tag the image with the Jenkins build number
-                    // image.tag("build-${env.BUILD_NUMBER}")
+                   // Build the Docker image using the Dockerfile in the current workspace
+                    bat 'docker build -t jenkinsrepo:v1 .'
                 }
             }
         }
