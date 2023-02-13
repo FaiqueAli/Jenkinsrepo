@@ -7,14 +7,17 @@ pipeline {
     environment{
         VERSION ="0.0.0"
     }
-    
-
-
 
     stages {
         stage('Hello') {
             steps {
-                echo "This is build number $BUILD_NUMBER"
+                script {
+                    // Build the Docker image using the Dockerfile in the current workspace
+                    def image = docker.build("jenkinsrepo:v1")
+
+                    // Tag the image with the Jenkins build number
+                    image.tag("build-${env.BUILD_NUMBER}")
+                }
             }
         }
         stage('Test') {
