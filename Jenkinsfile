@@ -22,19 +22,13 @@ pipeline {
                 bat 'docker run --rm jenkinsrepo:v1'
                
             }
-            {
-                success {
-                    script {
-                        bat 'docker rmi jenkinsrepo:v1'
-                    }
-                }
-            }
             
         }
         stage('Deploy') {
             steps {
                 echo "the current version is $VERSION"
                 println("$VERSION")
+                bat 'docker rmi jenkinsrepo:v1'
                 
             }
 
