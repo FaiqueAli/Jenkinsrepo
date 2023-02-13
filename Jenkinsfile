@@ -20,7 +20,6 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'docker run --rm jenkinsrepo:v1'
-               
             }
             
         }
